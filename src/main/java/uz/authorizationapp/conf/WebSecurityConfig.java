@@ -33,7 +33,8 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests((auth)->{
                     auth
                             .requestMatchers(
-                                    "api/file/"
+                                    "api/file/**",
+                                    "api/lists/**"
                                     ,"api/auth/logout")
                             .authenticated()
                             .anyRequest().permitAll();

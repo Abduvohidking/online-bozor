@@ -1,25 +1,18 @@
-package uz.authorizationapp.entity;
+package uz.authorizationapp.upload;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import uz.authorizationapp.entity.template.ConfigEntity;
 
-@EqualsAndHashCode(callSuper = true)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@EntityListeners(AuditingEntityListener.class)
-@Entity
-public class Lists extends ConfigEntity {
+public class ListDto {
 
     @Column(nullable = false)
-    private Long int00;
+    private Long id;
 
     @Column(nullable = false)
     private Long type_id;
@@ -47,5 +40,4 @@ public class Lists extends ConfigEntity {
     private String val03;
 
     private String val04;
-
 }

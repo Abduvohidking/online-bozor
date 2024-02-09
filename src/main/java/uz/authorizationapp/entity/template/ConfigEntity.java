@@ -1,5 +1,6 @@
 package uz.authorizationapp.entity.template;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,25 +21,30 @@ public abstract class ConfigEntity {
     @Id
     private Long id;
 
+    @JsonIgnore
     private Integer state = 1;
 
+    @JsonIgnore
     @Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
     @Column(name = "created_at", updatable = false,nullable = false)
     private Date CreatedAt;
 
 
+    @JsonIgnore
     @Temporal(TemporalType.TIMESTAMP)
     @UpdateTimestamp
     @Column(name = "updated_at")
     private Date UpdatedAt;
 
+    @JsonIgnore
     @JoinColumn(updatable = false,name = "created_by")
     @CreatedBy
     @ManyToOne(fetch = FetchType.LAZY)
     private User createdBy;
 
 
+    @JsonIgnore
     @JoinColumn(name = "updated_by")
     @LastModifiedBy
     @ManyToOne(fetch = FetchType.LAZY)
