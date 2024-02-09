@@ -6,9 +6,10 @@ COPY pom.xml /build/
 COPY src /build/src/
 
 RUN mvn clean package
-COPY target/authorization-app-${VERSION}.jar target/application.jar
+COPY target/authorization-app-${version}.jar target/application.jar
 
-FROM openjdk:17.0.9-jre-slim
+FROM openjdk:17-jdk-slim
+#FROM openjdk:17.0.9-jre-slim
 WORKDIR /app/
 
 COPY --from=BUILDER /build/target/application.jar /app/
