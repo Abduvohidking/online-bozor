@@ -15,7 +15,7 @@ public class ListService {
     private final  ListRepository listRepository;
     public ApiResponse createList(ListDto lists){
         Lists lists1 = new Lists();
-        lists1.setInt00(lists.getId());
+        lists1.setId(lists.getId());
         lists1.setType_id(lists.getType_id());
         lists1.setName_uz(lists.getName_uz());
         lists1.setName_ru(lists.getName_ru());
