@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import uz.authorizationapp.security.CurrentUser;
 import uz.authorizationapp.service.AttachmentService;
 import uz.authorizationapp.upload.ApiResponse;
 
@@ -21,7 +22,7 @@ public class AttachmentController {
 
 
     @PostMapping(path = "upload",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ApiResponse addAttachment(MultipartHttpServletRequest request,@RequestPart("file") MultipartFile file) throws IOException {
+    public ApiResponse addAttachment(MultipartHttpServletRequest request, @RequestPart("file") MultipartFile file) throws IOException {
         ApiResponse result = attachmentService.addAttachment(file);
         return result;
 

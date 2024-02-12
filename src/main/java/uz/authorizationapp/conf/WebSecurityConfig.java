@@ -1,7 +1,6 @@
 package uz.authorizationapp.conf;
 
 
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,19 +24,22 @@ public class WebSecurityConfig {
     private final UUIDFilter UUIDFilter;
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests((auth)->{
+                .authorizeHttpRequests((auth) -> {
                     auth
                             .requestMatchers(
-                                    "api/file/**",
-                                    "api/lists/**"
-                                    ,"api/auth/logout")
-                            .authenticated()
-                            .anyRequest().permitAll();
+                                    "api/auth/register",
+                                    "api/auth/login",
+                                    "/api-docs/**",
+                                    "/swagger-ui/**",
+                                    "/swagger-resources/*",
+                                    "/v3/api-docs/**")
+                            .permitAll()
+                            .anyRequest().authenticated();
                 });
         http.addFilterBefore(UUIDFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
@@ -49,7 +51,8 @@ public class WebSecurityConfig {
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-//
+
+    //
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();

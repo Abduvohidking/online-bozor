@@ -21,6 +21,7 @@ public class AuthController {
     @Autowired
     AuthService authService;
 
+
     @PostMapping("/register")
     public HttpEntity<?> registerUser(@Valid @RequestBody RegisterDto registerDto) {
         ApiResponse response = authService.registerUser(registerDto);
