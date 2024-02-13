@@ -7,14 +7,13 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.*;
-import uz.authorizationapp.entity.User;
-import uz.authorizationapp.security.CurrentUser;
 import uz.authorizationapp.service.AuthService;
 import uz.authorizationapp.upload.ApiResponse;
 import uz.authorizationapp.upload.LoginDto;
 import uz.authorizationapp.upload.RegisterDto;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/api/auth")
 public class AuthController {
 
