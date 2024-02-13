@@ -10,8 +10,11 @@ import io.swagger.v3.oas.annotations.security.SecuritySchemes;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.License;
+import io.swagger.v3.oas.models.servers.Server;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.Arrays;
 
 @Configuration
 @OpenAPIDefinition(info = @Info(title = "Online Bozor", version = "1.0",
@@ -31,6 +34,7 @@ public class SwaggerConf {
                         addList("Bearer Authentication"))
                 .components(new Components().addSecuritySchemes
                         ("Bearer Authentication", createAPIKeyScheme()))
+                .servers(Arrays.asList( new Server().url("http://test.bozor-online.uz")))
                 .info(new io.swagger.v3.oas.models.info.Info().title("My REST API")
                         .description("Some custom description of API.")
                         .version("1.0")
